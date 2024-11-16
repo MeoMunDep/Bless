@@ -1,0 +1,7 @@
+{
+  "timeZone": "en-US",
+  "timeToRestartAllAccounts": 300,
+  "howManyAccountsRunInOneTime": 100,
+  "isDoTasks": true,
+  "isPlayingGames": true
+}
