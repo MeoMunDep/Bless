@@ -33,6 +33,7 @@ To get started with the bot, follow these steps:
 ```json
 {
   "timeZone": "en-US",
+  "delayEachAccount": [5, 8],
   "timeToRestartAllAccounts": 300,
   "howManyAccountsRunInOneTime": 100,
   "isDoTasks": true,
