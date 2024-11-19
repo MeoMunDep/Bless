@@ -33,7 +33,6 @@ To get started with the bot, follow these steps:
 ```json
 {
   "timeZone": "en-US",
-  "delayEachAccount": [5, 8],
   "timeToRestartAllAccounts": 300,
   "howManyAccountsRunInOneTime": 100,
   "isDoTasks": true,
@@ -47,6 +46,14 @@ To get started with the bot, follow these steps:
 ey...
 ey...
 ey...
+```
+
+### 2.1. `pubKeys.txt` 🗂️ - Get it from here >>> [Link](https://t.me/KeoAirDropFreeNe/257/16947)
+
+```txt
+12...
+12...
+12...
 ```
 
 ### 3. `wallets.txt` 💼 - Cannot update yet.
