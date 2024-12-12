@@ -13,8 +13,9 @@
 To get started with the bot, follow these steps:
 
 0. **Dowload NodeJS to run the bot**
-
--> [Link](https://t.me/KeoAirDropFreeNe/257/1462)
+> Remember to download Nodejs version: **22.11.0** and NPM version: **10.9.0**
+>
+> > [Download Link](https://t.me/KeoAirDropFreeNe/257/1462)
 
 1. **Install Dependencies and Modules:**
 
@@ -36,7 +37,11 @@ To get started with the bot, follow these steps:
   "timeToRestartAllAccounts": 300,
   "howManyAccountsRunInOneTime": 100,
   "isDoTasks": true,
-  "isPlayingGames": true
+  "isPlayingGames": true,
+  "isSkipInvalidProxy": false,
+  "proxyRotationInterval": 2,
+  "rotateProxy": false,
+  "delayEachAccount": [55, 88]
 }
 ```
 
@@ -77,6 +82,6 @@ socks5://user:password@host:port
 
 > You need to `cd` to the file after extract it.
 > Stop the [Bless Extension](https://bless.network/dashboard?ref=BE3JR9) first if yoou have one.
-> To run the bot, stop the use the following command: `node bot`
+> To run the bot, stop the use the following command: `cd bless-main/bless; node bot`
 
 🎇Enjoy!
