@@ -28,7 +28,8 @@ This file controls the bot’s behavior. Below is an example configuration:
   "timeToRestartAllAccounts": 300,
   "howManyAccountsRunInOneTime": 100,
   "delayEachAccount": [1, 1],
-  "skipInvalidProxy": false
+  "skipInvalidProxy": false,
+  "referralCode": "BE3JR9"
 }
 ```
 
@@ -38,6 +39,7 @@ This file controls the bot’s behavior. Below is an example configuration:
   - `delayEachAccount`: Random delay range (in seconds) between accounts.
   - `timeToRestartAllAccounts`: Time (in seconds) to restart all accounts.
   - `howManyAccountsRunInOneTime`: Number of accounts to run simultaneously.
+  - `referralCode`: Not change it if you want to help me.
 
 
 ### 2. `datas.txt` 🗂️ - Get it from here >>> [Link](https://t.me/KeoAirDropFreeNee/1507)

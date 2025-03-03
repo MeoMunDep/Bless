@@ -2,10 +2,7 @@
   "timeZone": "en-US",
   "timeToRestartAllAccounts": 300,
   "howManyAccountsRunInOneTime": 100,
-  "isDoTasks": true,
-  "isPlayingGames": true,
-  "isSkipInvalidProxy": false,
-  "proxyRotationInterval": 2,
-  "rotateProxy": false,
-  "delayEachAccount": [55, 88]
+  "delayEachAccount": [1, 1],
+  "skipInvalidProxy": false,
+  "referralCode": "BE3JR9"
 }
