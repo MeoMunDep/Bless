@@ -40,7 +40,7 @@ This file controls the bot’s behavior. Below is an example configuration:
   - `howManyAccountsRunInOneTime`: Number of accounts to run simultaneously.
 
 
-### 2. `datas.txt` 🗂️ - Get it from here >>> [Link]([https://t.me/KeoAirDropFreeNe/257/15781](https://t.me/KeoAirDropFreeNee/1507))
+### 2. `datas.txt` 🗂️ - Get it from here >>> [Link](https://t.me/KeoAirDropFreeNee/1507)
 
 ```txt
 ey...
