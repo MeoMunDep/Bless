@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  meomundep-bot:
+    build: .
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
