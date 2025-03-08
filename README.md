@@ -229,6 +229,12 @@ Or make the script executable and run:
 chmod +x run.sh && ./run.sh
 ```
 
+if you want to update the bot:
+
+```bash 
+git pull
+```
+
 </details>
 
 ### Docker Method
