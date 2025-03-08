@@ -1,0 +1,5 @@
+aiohttp
+colorama
+pycryptodome
+cloudscraper
+aiohttp_proxy

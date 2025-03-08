@@ -1,26 +1,219 @@
-# 🚀 Bot Setup Instructions
+# 🤖 MeoMunDep Bless Bot - Complete Setup Guide
 
-Welcome to the bot setup guide! Follow the steps below to install and configure the bot correctly. This guide is designed to be beginner-friendly, with clear explanations for each step.
+This comprehensive guide will help you set up and run the MeoMunDep Bot on Windows, macOS, or Linux. The bot automates certain game tasks efficiently and securely.
 
----
+## 📋 Table of Contents
 
-## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation Methods](#installation-methods)
+  - [Standard Installation](#standard-installation)
+  - [Docker Installation](#docker-installation)
+- [Configuration](#configuration)
+- [Running the Bot](#running-the-bot)
+- [Using Proxies](#using-proxies)
+- [Troubleshooting](#troubleshooting)
+- [Security Recommendations](#security-recommendations)
+- [Contact and Support](#Contactandsupport)
 
-1. [Configuration Files](#configuration-files)
-   - [`configs.json`](#1-configsjson)
-   - [`datas.txt`](#2-datastxt)
-   - [`proxies.txt`](#4-proxiestxt)
-   - [`wallets.txt`](#3-walletstxt)
-2. [Running the Bot](#running-the-bot)
-3. [Contact and Support](#contact-and-support)
+## 🔧 Prerequisites
 
----
+Before setting up the bot, ensure you have the following installed:
 
-## Configuration Files
+- **Python 3.11.9** - Required to run the script
+- **Git** (optional) - For cloning the repository
+- **Docker** (optional) - For containerized deployment
 
-### 1. `configs.json` - 📜 Adjust Bot Settings
+## 🚀 Installation Methods
 
-This file controls the bot’s behavior. Below is an example configuration:
+You can choose between standard installation or Docker-based deployment.
+
+### ⚙️ Standard Installation
+
+#### 1. Install Python
+
+<details>
+<summary><b>Windows</b></summary>
+
+- Download Python from [python.org](https://www.python.org/downloads/release/python-3119/)
+- During installation, check "Add Python to PATH"
+- Verify installation by opening Command Prompt and typing:
+  ```
+  python --version
+  ```
+  </details>
+
+<details>
+<summary><b>macOS</b></summary>
+
+- Install [Homebrew](https://brew.sh/) first:
+  ```bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+- Install Python using Homebrew:
+  ```bash
+  brew install python
+  ```
+- Verify installation:
+  ```bash
+  python3 --version
+  ```
+  </details>
+
+<details>
+<summary><b>Linux</b></summary>
+
+- For Ubuntu/Debian:
+  ```bash
+  sudo apt update
+  sudo apt install python3 python3-pip -y
+  ```
+- For CentOS/RHEL:
+  ```bash
+  sudo yum install python3 python3-pip -y
+  ```
+- Verify installation:
+  ```bash
+  python3 --version
+  ```
+  </details>
+
+#### 2. Install Git (Optional)
+
+<details>
+<summary><b>Windows</b></summary>
+
+- Download from [git-scm.com](https://git-scm.com/download/win)
+- Use default settings during installation
+</details>
+
+<details>
+<summary><b>macOS</b></summary>
+
+```bash
+brew install git
+```
+
+</details>
+
+<details>
+<summary><b>Linux (Debian/Ubuntu)</b></summary>
+
+```bash
+sudo apt install git -y
+```
+
+</details>
+
+#### 3. Clone Repository (If using Git)
+
+```bash
+git clone https://github.com/MeoMunDep/Bless.git
+cd Bless/dist
+```
+
+#### 4. Install Required PacBlesses
+
+Navigate to the bot folder and run:
+
+<details>
+<summary><b>Windows</b></summary>
+
+```
+pip install -r requirements.txt
+```
+
+</details>
+
+<details>
+<summary><b>macOS/Linux</b></summary>
+
+```bash
+pip3 install -r requirements.txt
+```
+
+</details>
+
+### 🐳 Docker Installation
+
+#### 1. Install Docker
+
+<details>
+<summary><b>Windows/macOS</b></summary>
+
+- Download and install [Docker Desktop](https://www.docker.com/products/docker-desktop)
+</details>
+
+<details>
+<summary><b>Linux</b></summary>
+
+```bash
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+</details>
+
+#### 2. Create Dockerfile
+
+Create a file named `Dockerfile` with the following content:
+
+```dockerfile
+FROM python:3.11.9-slim
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt && \
+    mkdir -p /app/data && \
+    chmod +x /app/run.sh
+
+VOLUME /app/data
+
+ENTRYPOINT ["/app/run.sh"]
+```
+
+#### 3. Create docker-compose.yml (Optional)
+
+Create a file named `docker-compose.yml` with the following content:
+
+```yaml
+version: '3'
+
+services:
+  meomundep-bot:
+    build: .
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+```
+
+## ⚙️ Configuration
+
+### Required Files
+
+Ensure you have the following files in your folder:
+
+- `meomundep.py` - Main bot script
+- `configs.json` - Configuration file
+- `datas.txt` - Bot data
+- `proxies.txt` - List of proxies (optional)
+- `requirements.txt` - List of required pacBlesses
+
+### requirements.txt Content
+
+```
+aiohttp
+aiohttp_proxy
+cloudscraper
+colorama
+Cryptodome
+```
+
+### Configurations (configs.json)
+
+Edit the `configs.json` file to customize the bot's behavior:
 
 ```json
 {
@@ -33,135 +226,164 @@ This file controls the bot’s behavior. Below is an example configuration:
 }
 ```
 
-- **Fields Explained:**
-  - `timeZone`: Time zone setting (e.g., "en-US").
-  - `skipInvalidProxy`: Skip invalid proxies if `true`.
-  - `delayEachAccount`: Random delay range (in seconds) between accounts.
-  - `timeToRestartAllAccounts`: Time (in seconds) to restart all accounts.
-  - `howManyAccountsRunInOneTime`: Number of accounts to run simultaneously.
-  - `referralCode`: Not change it if you want to help me.
+**Configuration Parameters:**
 
+- `timeZone`: Time zone setting (e.g., "en-US")
+- `howManyAccountsRunInOneTime`: Number of accounts to run simultaneously
+- `delayEachAccount`: Random delay range between processing accounts [min, max] in seconds
+- `timeToRestartAllAccounts`: Time to wait before restarting all accounts (in seconds)
+- `skipInvalidProxy`: Whether to skip accounts with invalid proxies
+- `referralCodes`: Add your referral code (optional)
 
-### 2. `datas.txt` 🗂️ - Get it from here >>> [Link](https://t.me/KeoAirDropFreeNee/1507)
+## ▶️ Running the Bot
 
-```txt
-ey...
-ey...
-ey...
+### Standard Method
+
+<details>
+<summary><b>Windows</b></summary>
+
+```
+python meomundep.py
 ```
 
-### 2.1. `pubKeys.txt` 🗂️ - Get it from here >>> [Link](https://t.me/KeoAirDropFreeNee/1512)
+Or double-click the provided `run.bat` file.
 
-```txt
-12...
-12...
-12...
+</details>
+
+<details>
+<summary><b>macOS/Linux</b></summary>
+
+```bash
+python3 meomundep.py
 ```
 
-_Note: Each row for each account_
+Or make the script executable and run:
 
-### 3. `proxies.txt` - 🌐 Proxy List (Optional)
+```bash
+chmod +x run.sh && ./run.sh
+```
 
-If you are using proxies, add them here. Leave the file blank if you are not using proxies. Supported formats:
+For obfuscated versions:
 
-```txt
+```bash
+chmod +x meomundep
+./meomundep
+```
+
+</details>
+
+### Docker Method
+
+<details>
+<summary><b>Build and Run with Docker</b></summary>
+
+```bash
+# Build image
+docker build -t meomundep-bot .
+
+# Run container
+docker run -it --rm \
+  -v $(pwd)/data:/app/data \
+  --name meomundep-container \
+  meomundep-bot
+```
+
+</details>
+
+<details>
+<summary><b>Using Docker Compose</b></summary>
+
+```bash
+docker-compose up --build
+```
+
+</details>
+
+## 🔒 File Permissions
+
+### Windows
+
+```
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+### Linux/macOS
+
+```bash
+chmod 600 configs.json datas.txt proxies.txt meomundep.py
+```
+
+## 🌐 Using Proxies
+
+The bot supports various proxy formats:
+
+- HTTP/HTTPS: `http://username:password@host:port` or `http://host:port`
+- SOCKS4/SOCKS5: `socks4://username:password@host:port` or `socks5://host:port`
+
+Add proxies to `proxies.txt`, one proxy per line. Example formats:
+
+```
 http://host:port
-https://host:port
-socks4://host:port
+http://user:pass@host:port
 socks5://host:port
-http://user:password@host:port
-https://user:password@host:port
-socks4://user:password@host:port
-socks5://user:password@host:port
+socks5://user:pass@host:port
 ```
 
-_Note: each row for each account_
+Leave the file empty if you don't want to use proxies.
 
----
+## ❓ Troubleshooting
 
-### 4. `wallets.txt` - 💼 Wallet Addresses
+<details>
+<summary><b>Bot crashes on startup</b></summary>
 
-- Wallets generator: [Link](https://github.com/MeoMunDep/Automatic-Ultimate-Create-Wallets-for-Airdrop)
+- Ensure all required pacBlesses are installed
+- Check your Python version (Python 3.11.9 required)
+- Verify configuration file format
+</details>
 
-Add your wallet addresses in the following format:
+<details>
+<summary><b>Connection errors</b></summary>
 
-```txt
-abc...xyz
-abc...xyz
-abc...xyz
-```
+- Check your internet connection
+- Verify proxy settings if using proxies
+- Check if the required endpoints are accessible
+</details>
 
-_Note: Wallet updates are currently not supported._
+<details>
+<summary><b>Authentication failures</b></summary>
 
-## Running the Bot
+- Ensure your bot data in `datas.txt` and `pubKeys` is correct
+- Learn how to retrieve data and pubkey from here: [data](https://t.me/KeoAirDropFreeNee/1507) - [pubKeys](https://t.me/KeoAirDropFreeNee/1512)
+- Check if your IP or proxy is blocked
+</details>
 
-1. Navigate to the folder containing the bot files:
+## 🛡️ Security Recommendations
 
-   ```bash
-   cd /path/to/bot-folder/
-   ```
+1. **Data Protection**:
 
-2. Run the bot using the following command:
+   - Keep your `datas.txt` and configuration files secure
+   - Use file permissions to restrict access
 
-#### **Windows**
+2. **Docker Security**:
 
-Open Command Prompt (cmd) or PowerShell and run:
-
-```powershell
-./meomundep.exe
-```
-
-(If that doesn’t work, try `meomundep.exe` or `.\meomundep.exe`.)
-
----
-
-#### **Linux**
-
-Since `.exe` files are designed for Windows, you need **Wine** to run them:
-
-1. **Install Wine (if not installed):**
-   - **Ubuntu/Debian:**
+   - Run Docker containers as non-root user:
      ```bash
-     sudo apt update && sudo apt install wine
+     docker run -u 1000:1000 meomundep-bot
      ```
-   - **Arch Linux:**
-     ```bash
-     sudo pacman -S wine
-     ```
-   - **Fedora:**
-     ```bash
-     sudo dnf install wine
-     ```
-2. **Run the program:**
-   ```bash
-   wine meomundep.exe
-   ```
+   - Keep your Docker installation up-to-date
 
----
+3. **Proxy Usage**:
+   - Use secure proxies from trusted providers
+   - Rotate proxies periodically to avoid IP bans
 
-#### **macOS**
+## 📝 Security Notice
 
-macOS also requires **Wine** to run `.exe` files:
+The executable file is obfuscated to protect the source code. This is normal and doesn't indicate malicious behavior.
 
-1. **Install Homebrew (if not installed):**
-   ```bash
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-2. **Install Wine:**
-   ```bash
-   brew install wine
-   ```
-3. **Run the program:**
-   ```bash
-   wine meomundep.exe
-   ```
-
----
-
-## Contact and Support
+## 📞 Contact and Support
 
 - **Help me with your referral** [Referral Link](https://bless.network/dashboard?ref=BE3JR9)
-- **Buy me a telegram account** [Here](https://t.me/KeoAirDropFreeNe/312/27801) or [Here](https://github.com/MeoMunDep/MeoMunDep)
+- **Buy me a proxie account** [Here](https://t.me/KeoAirDropFreeNe/312/27801) or [Here](https://github.com/MeoMunDep/MeoMunDep)
 
 If you encounter any issues or have questions, feel free to reach out:
 
@@ -173,4 +395,4 @@ Your support is greatly appreciated! 🐱
 
 ---
 
-Enjoy using the bot! 🚀
+**Note**: This bot is for educational purposes only. So do not sell or steal it.
