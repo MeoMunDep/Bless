@@ -263,13 +263,6 @@ Or make the script executable and run:
 chmod +x run.sh && ./run.sh
 ```
 
-For obfuscated versions:
-
-```bash
-chmod +x meomundep
-./meomundep
-```
-
 </details>
 
 ### Docker Method
@@ -313,7 +306,21 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 chmod 600 configs.json datas.txt proxies.txt meomundep.py
 ```
 
-## 🌐 Using Proxies
+## 🌐 Datas and Proxies
+
+- Learn how to retrieve data and pubkey from here: [data](https://t.me/KeoAirDropFreeNee/1507) - [pubKeys](https://t.me/KeoAirDropFreeNee/1512)
+- datas.txt
+```txt
+ey...
+ey...
+ey...
+```
+- pubKeys.txt
+```txt
+12...
+12...
+12...
+```
 
 The bot supports various proxy formats:
 
@@ -353,7 +360,6 @@ Leave the file empty if you don't want to use proxies.
 <summary><b>Authentication failures</b></summary>
 
 - Ensure your bot data in `datas.txt` and `pubKeys` is correct
-- Learn how to retrieve data and pubkey from here: [data](https://t.me/KeoAirDropFreeNee/1507) - [pubKeys](https://t.me/KeoAirDropFreeNee/1512)
 - Check if your IP or proxy is blocked
 </details>
 
