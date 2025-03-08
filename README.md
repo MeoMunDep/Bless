@@ -154,40 +154,6 @@ newgrp docker
 
 </details>
 
-#### 2. Create Dockerfile
-
-Create a file named `Dockerfile` with the following content:
-
-```dockerfile
-FROM python:3.11.9-slim
-
-WORKDIR /app
-
-COPY . .
-
-RUN pip install --no-cache-dir -r requirements.txt && \
-    mkdir -p /app/data && \
-    chmod +x /app/run.sh
-
-VOLUME /app/data
-
-ENTRYPOINT ["/app/run.sh"]
-```
-
-#### 3. Create docker-compose.yml (Optional)
-
-Create a file named `docker-compose.yml` with the following content:
-
-```yaml
-version: '3'
-
-services:
-  meomundep-bot:
-    build: .
-    volumes:
-      - ./data:/app/data
-    restart: unless-stopped
-```
 
 ## ⚙️ Configuration
 
