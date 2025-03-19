@@ -2,12 +2,16 @@ FROM python:3.11.9-slim
 
 WORKDIR /app
 
+COPY requirements.txt . 
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
 
-RUN pip install --no-cache-dir -r requirements.txt && \
-    mkdir -p /app/data && \
-    chmod +x /app/run.sh
+RUN mkdir -p /app/data && chmod -R 777 /app/data
+
+
+RUN chmod +x /app/meomundep.py || true
 
 VOLUME /app/data
 
-ENTRYPOINT ["/app/run.sh"]
+ENTRYPOINT ["python", "/app/meomundep.py"]
