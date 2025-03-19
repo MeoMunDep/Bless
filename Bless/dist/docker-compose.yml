@@ -6,3 +6,4 @@ services:
     volumes:
       - ./data:/app/data
     restart: unless-stopped
+    tty: true
