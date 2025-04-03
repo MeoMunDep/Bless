@@ -108,7 +108,7 @@ sudo apt install git -y
 
 ```bash
 git clone https://github.com/MeoMunDep/Bless.git
-cd Bless/dist
+cd bless/Bless/dist
 ```
 
 #### 4. Install Required PacBlesses
@@ -301,10 +301,16 @@ The bot supports various proxy formats:
 
 Add proxies to `proxies.txt`, one proxy per line. Example formats:
 
-```
+- [Get it from here](https://www.webshare.io/?referral_code=4l5kb3glsce7)
+
+```txt
 http://host:port
-http://user:pass@host:port
+https://host:port
+socks4://host:port
 socks5://host:port
+http://user:pass@host:port
+https://user:pass@host:port
+socks4://user:pass@host:port
 socks5://user:pass@host:port
 ```
 
