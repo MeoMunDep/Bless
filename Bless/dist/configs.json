@@ -1,8 +1,8 @@
 {
   "timeZone": "en-US",
   "timeToRestartAllAccounts": 300,
-  "howManyAccountsRunInOneTime": 100,
+  "howManyAccountsRunInOneTime": 1000,
   "delayEachAccount": [1, 1],
   "skipInvalidProxy": false,
-  "referralCode": "BE3JR9"
+  "referralCode": ["BE3JR9"]
 }
