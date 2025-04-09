@@ -185,10 +185,10 @@ Edit the `configs.json` file to customize the bot's behavior:
 {
   "timeZone": "en-US",
   "timeToRestartAllAccounts": 300,
-  "howManyAccountsRunInOneTime": 100,
+  "howManyAccountsRunInOneTime": 1000,
   "delayEachAccount": [1, 1],
   "skipInvalidProxy": false,
-  "referralCode": "BE3JR9"
+  "referralCodes": ["BE3JR9"]
 }
 ```
 
