@@ -4,5 +4,5 @@
   "howManyAccountsRunInOneTime": 1000,
   "delayEachAccount": [1, 1],
   "skipInvalidProxy": false,
-  "referralCode": ["BE3JR9"]
+  "referralCodes": ["BE3JR9"]
 }
