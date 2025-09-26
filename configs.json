@@ -1,5 +1,4 @@
 {
-  "timeZone": "en-US",
   "timeToRestartAllAccounts": 300,
   "howManyAccountsRunInOneTime": 1000,
   "delayEachAccount": [1, 1],
